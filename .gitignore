@@ -1,0 +1,8 @@
+.edge-*/
+.edge*
+desktop-smoke.png
+mobile-smoke.png
+peproute-*.png
+*.log
+Thumbs.db
+.DS_Store
