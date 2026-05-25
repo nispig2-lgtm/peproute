@@ -1,9 +1,8 @@
-name: Apply PepRoute index
+name: Apply PepRoute homepage patch
 
 on:
   push:
     paths:
-      - '_peproute_upload/**'
       - '.github/workflows/apply-index.yml'
 
 permissions:
@@ -14,31 +13,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Rebuild index.html
+      - name: Patch ladder copy
         shell: bash
         run: |
           set -euo pipefail
-          if [ ! -f _peproute_upload/manifest.env ]; then
-            echo "No upload manifest yet."
-            exit 0
-          fi
-          source _peproute_upload/manifest.env
-          rm -f /tmp/peproute-index.b64
-          for i in $(seq -w 0 $((PARTS-1))); do
-            part="_peproute_upload/index.part${i}.b64"
-            test -f "$part"
-            cat "$part" >> /tmp/peproute-index.b64
-          done
-          base64 -d /tmp/peproute-index.b64 > index.html
-          actual=$(git hash-object index.html)
-          test "$actual" = "$BLOB_SHA"
-          rm -rf _peproute_upload
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+          replacements = [
+              ('<div class="ladder-card"><div class="ladder-k">1 kit</div><div class="ladder-p">Trial<small>stock route</small></div><div class="bar"><span class="bar-fill high" style="--level:1"></span></div><div class="ladder-n">Entry order</div></div>', '<div class="ladder-card"><div class="ladder-k">Trial</div><div class="ladder-p">1 kit<small>stock route</small></div><div class="bar"><span class="bar-fill high" style="--level:1"></span></div><div class="ladder-n">Entry order</div></div>'),
+              ('<div class="ladder-card"><div class="ladder-k">10 kits</div><div class="ladder-p">Small<small>stock route</small></div><div class="bar"><span class="bar-fill mid" style="--level:.78"></span></div><div class="ladder-n">Better unit quote</div></div>', '<div class="ladder-card"><div class="ladder-k">Small</div><div class="ladder-p">10 kits<small>stock route</small></div><div class="bar"><span class="bar-fill mid" style="--level:.78"></span></div><div class="ladder-n">Better unit quote</div></div>'),
+              ('<div class="ladder-card"><div class="ladder-k">50 kits</div><div class="ladder-p">Scale<small>stock route</small></div><div class="bar"><span class="bar-fill low" style="--level:.56"></span></div><div class="ladder-n">Best stock tier</div></div>', '<div class="ladder-card"><div class="ladder-k">Scale</div><div class="ladder-p">50 kits<small>stock route</small></div><div class="bar"><span class="bar-fill low" style="--level:.56"></span></div><div class="ladder-n">Best stock tier</div></div>'),
+              ('<div class="ladder-card best"><div class="ladder-k">100+ kits</div><div class="ladder-p">Custom<small>or group buy</small></div><div class="bar"><span class="bar-fill low" style="--level:.38"></span></div><div class="ladder-n">Custom batch</div></div>', '<div class="ladder-card best"><div class="ladder-k">Custom</div><div class="ladder-p">100+ kits<small>or group buy</small></div><div class="bar"><span class="bar-fill low" style="--level:.38"></span></div><div class="ladder-n">Custom batch</div></div>'),
+          ]
+          for old, new in replacements:
+              if old in html:
+                  html = html.replace(old, new, 1)
+              elif new in html:
+                  pass
+              else:
+                  raise SystemExit(f'missing expected ladder pattern: {old[:80]}')
+          path.write_text(html, encoding='utf-8')
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html _peproute_upload
+          git add index.html
           if git diff --cached --quiet; then
             echo "No index change."
             exit 0
           fi
-          git commit -m "Apply current PepRoute homepage"
+          git commit -m "Update PepRoute quantity ladder"
           git push
