@@ -1,0 +1,44 @@
+name: Apply PepRoute index
+
+on:
+  push:
+    paths:
+      - '_peproute_upload/**'
+      - '.github/workflows/apply-index.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild index.html
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f _peproute_upload/manifest.env ]; then
+            echo "No upload manifest yet."
+            exit 0
+          fi
+          source _peproute_upload/manifest.env
+          rm -f /tmp/peproute-index.b64
+          for i in $(seq -w 0 $((PARTS-1))); do
+            part="_peproute_upload/index.part${i}.b64"
+            test -f "$part"
+            cat "$part" >> /tmp/peproute-index.b64
+          done
+          base64 -d /tmp/peproute-index.b64 > index.html
+          actual=$(git hash-object index.html)
+          test "$actual" = "$BLOB_SHA"
+          rm -rf _peproute_upload
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html _peproute_upload
+          if git diff --cached --quiet; then
+            echo "No index change."
+            exit 0
+          fi
+          git commit -m "Apply current PepRoute homepage"
+          git push
