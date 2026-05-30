@@ -354,9 +354,10 @@ section{padding:clamp(4.2rem,8vw,6.4rem) 0;border-bottom:1px solid var(--bd)}
 .add-btn:hover{background:var(--ag);border-color:var(--ab);transform:translateY(-1px)}
 .add-btn.added{color:var(--gn);background:var(--gg);border-color:var(--gb)}
 
-.contact-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(1.5rem,4vw,3rem);margin-top:1.5rem}
+.contact-grid{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(320px,1.1fr);gap:clamp(1.5rem,4vw,3rem);margin-top:1.5rem}
 .contact-stack{display:flex;flex-direction:column;gap:.55rem}
-.contact-item{display:flex;gap:.75rem;align-items:center;padding:.78rem .9rem;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r2)}
+.contact-item{display:flex;gap:.75rem;align-items:center;padding:.78rem .9rem;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r2);transition:transform var(--t),border-color var(--t),background var(--t)}
+.contact-item:hover{transform:translateY(-1px);border-color:var(--bd2)}
 .contact-item.whatsapp-priority{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.36);box-shadow:0 12px 28px rgba(37,211,102,.12)}
 .contact-item.whatsapp-priority .contact-icon{background:#25d366;border-color:#25d366;color:#062d16}
 .contact-item.whatsapp-priority .contact-value{color:#0f6b34}
@@ -367,37 +368,17 @@ a.contact-item{color:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem}
 .chip{font-family:var(--mono);font-size:11px;padding:.25rem .58rem;border:1px solid var(--bd);border-radius:var(--r);background:var(--s1)}
 .note{padding:.9rem;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r2);font-family:var(--mono);font-size:10px;color:var(--txm);line-height:1.85}
-.form-box{padding:clamp(1.2rem,3vw,2rem)}
-.form-title{display:flex;align-items:center;gap:.5rem;font-weight:800;margin-bottom:1rem}
+.contact-direct{padding:clamp(1.25rem,3vw,2rem);display:flex;flex-direction:column;gap:1rem}
+.direct-title{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:clamp(18px,2vw,22px);line-height:1.2}
 .live-dot{width:8px;height:8px;border-radius:999px;background:var(--gn);box-shadow:0 0 0 4px var(--gg)}
-.basket{display:none;margin-bottom:.85rem;padding:.75rem;background:var(--ag);border:1px solid var(--ab);border-radius:var(--r2)}
-.basket.on{display:block}
-.basket-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;font-family:var(--mono);font-size:10px;color:var(--ac);text-transform:uppercase}
-.clear-btn{border:0;background:transparent;color:var(--txm);font-family:var(--mono);font-size:10px}
-.basket-items{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
-.basket-pill{display:inline-flex;align-items:center;gap:.35rem;background:var(--s0);border:1px solid var(--ab);color:var(--ac);border-radius:999px;padding:.18rem .5rem;font-size:12px}
-.remove-pill{border:0;background:transparent;color:var(--txf);font-weight:800}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.field{margin-bottom:.75rem}
-label{display:block;margin-bottom:.3rem;font-size:12px;font-weight:700;color:var(--txm)}
-input,select,textarea{
-  width:100%;
-  border:1px solid var(--bd);
-  border-radius:var(--r);
-  background:var(--s0);
-  color:var(--tx);
-  padding:.58rem .72rem;
-  font-size:14px;
-  transition:border-color var(--t),box-shadow var(--t),background var(--t);
-}
-[data-theme=dark] input,[data-theme=dark] select,[data-theme=dark] textarea{background:var(--s2)}
-input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px var(--ag)}
-textarea{resize:vertical;min-height:108px}
-.help{display:block;margin-top:.25rem;font-size:11px;color:var(--txf)}
-.form-actions{display:grid;grid-template-columns:1fr auto auto;gap:.7rem;align-items:center}
-.form-ok{display:none;margin-top:.75rem;padding:.75rem;background:var(--gg);border:1px solid var(--gb);border-radius:var(--r);font-family:var(--mono);font-size:11px;color:var(--gn);line-height:1.65}
-.form-ok.on{display:block}
-.form-disclaimer{margin-top:.75rem;font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--txm);background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:.65rem .75rem}
+.direct-copy{color:var(--txm);font-size:15px;max-width:58ch}
+.direct-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.direct-step{padding:.9rem;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r2)}
+.direct-step strong{display:block;font-size:14px;line-height:1.25}
+.direct-step span{display:block;margin-top:.25rem;font-family:var(--mono);font-size:10px;line-height:1.55;color:var(--txm);text-transform:uppercase;letter-spacing:.04em}
+.direct-actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.direct-actions .btn-primary{min-width:170px}
+.direct-note{padding:.85rem;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--txm)}
 
 .disc{padding:1rem 0;border-bottom:1px solid var(--bd)}
 .disc p{font-family:var(--mono);font-size:10px;color:var(--txf);line-height:1.75}
@@ -475,7 +456,7 @@ textarea{resize:vertical;min-height:108px}
   .ladder-sub{font-size:9px;white-space:normal;line-height:1.55;letter-spacing:.04em}
   .reveal{opacity:1;transform:none;transition:none}
   .hero-ladder{margin-top:.8rem}
-  .signal-grid,.desk-grid,.package-strip,.ladder-grid,.route-cards,.form-row,.form-actions{grid-template-columns:1fr}
+  .signal-grid,.desk-grid,.package-strip,.ladder-grid,.route-cards,.direct-list{grid-template-columns:1fr}
   .cost-row{grid-template-columns:62px 1fr 42px}
   .wa-float{
     left:1rem;
@@ -551,7 +532,7 @@ textarea{resize:vertical;min-height:108px}
           <a class="btn btn-ghost" href="#catalog">View Routes</a>
         </div>
         <div class="hero-compliance">For research use only. Not for human or veterinary use.</div>
-        <div class="hero-proof" aria-label="PepRoute operating highlights">
+        <div class="hero-proof" role="group" aria-label="PepRoute operating highlights">
           <div class="proof"><strong>&lt;24h</strong><span>Quote target</span></div>
           <div class="proof"><strong>2</strong><span>Route types</span></div>
           <div class="proof"><strong>100+</strong><span>Kit custom MOQ</span></div>
@@ -601,7 +582,7 @@ textarea{resize:vertical;min-height:108px}
             <div class="peptide-board-title">Peptide Quote Board</div>
             <div class="peptide-board-note">send any list</div>
           </div>
-          <div class="peptide-chip-grid" aria-label="Popular research peptide request examples">
+          <div class="peptide-chip-grid" role="group" aria-label="Popular research peptide request examples">
             <span class="peptide-chip">BPC-157</span>
             <span class="peptide-chip">TB-500</span>
             <span class="peptide-chip">GHK-Cu</span>
@@ -879,25 +860,25 @@ textarea{resize:vertical;min-height:108px}
           <div class="route-top"><span class="badge">1K</span><span class="preview-k">trial</span></div>
           <h3>1 Kit Stock</h3>
           <p>Entry order for trial demand, sample testing, and first-time buyers using existing supplier channels.</p>
-          <button class="add-btn" type="button" data-add="1 Kit Stock Route">+ Add</button>
+          <a class="add-btn" data-whatsapp-link href="#contact" target="_blank" rel="noopener">Quote via WhatsApp</a>
         </article>
         <article class="route-card reveal" data-route="10 Kits Stock Route">
           <div class="route-top"><span class="badge">10K</span><span class="preview-k">small order</span></div>
           <h3>10 Kits Stock</h3>
           <p>Small replenishment tier with better unit economics while staying below Custom Batch MOQ.</p>
-          <button class="add-btn" type="button" data-add="10 Kits Stock Route">+ Add</button>
+          <a class="add-btn" data-whatsapp-link href="#contact" target="_blank" rel="noopener">Quote via WhatsApp</a>
         </article>
         <article class="route-card reveal" data-route="50 Kits Stock Route">
           <div class="route-top"><span class="badge">50K</span><span class="preview-k">best stock</span></div>
           <h3>50 Kits Stock</h3>
           <p>Best Stock Route tier for stronger quote leverage before moving into made-to-order production.</p>
-          <button class="add-btn" type="button" data-add="50 Kits Stock Route">+ Add</button>
+          <a class="add-btn" data-whatsapp-link href="#contact" target="_blank" rel="noopener">Quote via WhatsApp</a>
         </article>
         <article class="route-card reveal" data-route="100+ Kits Custom Batch">
           <div class="route-top"><span class="badge">100+</span><span class="preview-k">custom / pool</span></div>
           <h3>100+ Kits Custom</h3>
           <p>Made-to-order batch for wholesalers or pooled buyers, from raw material to finished vials.</p>
-          <button class="add-btn" type="button" data-add="100+ Kits Custom Batch">+ Add</button>
+          <a class="add-btn" data-whatsapp-link href="#contact" target="_blank" rel="noopener">Quote via WhatsApp</a>
         </article>
       </div>
     </div>
@@ -908,7 +889,7 @@ textarea{resize:vertical;min-height:108px}
       <div class="section-head">
         <div class="ey">Start here</div>
         <h2>Send the list. Pick a kit tier or join a pool.</h2>
-        <p class="sdesc">The form creates a prepared email for an all-in quote. Include whether you want 1 kit, 10 kits, 50 kits, 100+ kit Custom Batch, or Group Buy Pool placement.</p>
+        <p class="sdesc">Message PepRoute directly on WhatsApp, join the Telegram group, or email your peptide list for an all-in quote. Include destination and desired tier: 1 kit, 10 kits, 50 kits, 100+ kits, or Group Buy Pool.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-stack reveal">
@@ -916,14 +897,14 @@ textarea{resize:vertical;min-height:108px}
             <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.43L3 20l1.12-5.27A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.8 8.9c.2-.45.4-.48.68-.48h.5c.16 0 .38.06.58.32.2.25.78.96.85 1.15.06.19.03.42-.06.56-.1.16-.19.25-.34.43-.16.18-.32.39-.14.72.18.35.8 1.32 1.72 2.13 1.18 1.05 2.17 1.38 2.51 1.53.35.15.55.13.75-.08.22-.24.86-1 1.1-1.35.22-.35.46-.29.77-.17.32.11 2.02.95 2.37 1.12.35.17.58.25.66.39.08.13.08.78-.18 1.53-.25.75-1.45 1.43-2.02 1.48-.52.05-1.18.07-1.9-.12-.44-.12-1-.32-1.72-.63-3.02-1.3-5-4.33-5.15-4.53-.15-.2-1.23-1.64-1.23-3.13 0-1.48.78-2.22 1.07-2.52Z"/></svg></div>
             <div><div class="contact-label">Fast quote</div><div class="contact-value">WhatsApp: message us first</div></div>
           </a>
-          <div class="contact-item">
+          <a class="contact-item" href="mailto:peproute@proton.me?subject=PepRoute quote request">
             <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></div>
-            <div><div class="contact-label">Email</div><div class="contact-value">orders@peproute.io</div></div>
-          </div>
-          <div class="contact-item">
+            <div><div class="contact-label">Email</div><div class="contact-value">peproute@proton.me</div></div>
+          </a>
+          <a class="contact-item" href="https://t.me/+6fu3dLBxykQ1Y2Vl" target="_blank" rel="noopener">
             <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <div><div class="contact-label">Telegram</div><div class="contact-value">@PepRoute</div></div>
-          </div>
+            <div><div class="contact-label">Telegram Group</div><div class="contact-value">Join PepRoute group</div></div>
+          </a>
           <div class="contact-item">
             <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <div><div class="contact-label">Quote target</div><div class="contact-value">Within 24 hours</div></div>
@@ -944,53 +925,21 @@ textarea{resize:vertical;min-height:108px}
           <div class="note">For Research Use Only. B2B wholesale only. Quote is free and non-binding. Third-party testing is optional and not included by default. Import, use, and compliance responsibilities remain with the buyer.</div>
         </div>
 
-        <div class="panel form-box reveal">
-          <form id="quoteForm" novalidate>
-            <div class="form-title"><span class="live-dot" aria-hidden="true"></span>Research Peptide Quote Request</div>
-            <div class="basket" id="basket">
-              <div class="basket-head"><span>From catalog</span><button class="clear-btn" type="button" id="clearBasket">Clear all</button></div>
-              <div class="basket-items" id="basketItems"></div>
-            </div>
-            <div class="form-row">
-              <div class="field"><label for="firstName">First Name *</label><input id="firstName" name="firstName" type="text" placeholder="Alex" required></div>
-              <div class="field"><label for="lastName">Last Name *</label><input id="lastName" name="lastName" type="text" placeholder="Morgan" required></div>
-            </div>
-            <div class="field"><label for="email">Business Email *</label><input id="email" name="email" type="email" placeholder="you@company.com" required></div>
-            <div class="form-row">
-              <div class="field">
-                <label for="country">Ship To *</label>
-                <select id="country" name="country" required>
-                  <option value="">Country...</option>
-                  <option>United States</option><option>United Kingdom</option><option>Germany</option><option>Australia</option><option>Canada</option><option>Netherlands</option><option>France</option><option>Japan</option><option>Other</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="shipping">Shipping</label>
-                <select id="shipping" name="shipping">
-                  <option value="">Your recommendation</option>
-                  <option>Fastest available</option>
-                  <option>Most economical</option>
-                  <option>Buyer compliance priority</option>
-                </select>
-              </div>
-            </div>
-            <div class="field">
-              <label for="message">Peptide List &amp; Quantities *</label>
-              <textarea id="message" name="message" required placeholder="Example:
-BPC-157 x 500mg
-Semaglutide x 2g
-TB-500 x 1g"></textarea>
-              <span class="help">Any format is acceptable. Include peptide name, destination, and desired tier: 1 kit, 10 kits, 50 kits, 100+ kits, or Group Buy Pool.</span>
-            </div>
-            <div class="field"><label for="notes">Additional Notes</label><textarea id="notes" name="notes" rows="2" placeholder="Tier preference, group-buy quantity, testing request, batch timing, delivery support needs..."></textarea></div>
-            <div class="form-actions">
-              <button class="btn btn-primary" type="submit">Prepare Email Request</button>
-              <a class="btn btn-whatsapp" data-whatsapp-link href="#contact" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="btn btn-ghost" href="https://t.me/PepRoute" target="_blank" rel="noopener">Telegram</a>
-            </div>
-            <div class="form-disclaimer">For Research Use Only. Not for human or veterinary use. Buyer is responsible for destination compliance, import rules, and end-use restrictions.</div>
-            <div class="form-ok" id="formOk">Email draft prepared. Review it in your mail app before sending.</div>
-          </form>
+        <div class="panel contact-direct reveal">
+          <div class="direct-title"><span class="live-dot" aria-hidden="true"></span>Send Your Quote Request Directly</div>
+          <p class="direct-copy">For the fastest reply, send one message with your peptide list, destination country, desired tier, and whether you need Stock Route, Custom Batch, or Group Buy Pool placement.</p>
+          <div class="direct-list">
+            <div class="direct-step"><strong>Peptide list</strong><span>Names, strength, vial count, or bulk amount</span></div>
+            <div class="direct-step"><strong>Order tier</strong><span>1 kit / 10 kits / 50 kits / 100+ kits</span></div>
+            <div class="direct-step"><strong>Destination</strong><span>Country, shipping priority, import concern</span></div>
+            <div class="direct-step"><strong>Testing needs</strong><span>Factory COA or buyer-funded third-party test</span></div>
+          </div>
+          <div class="direct-actions">
+            <a class="btn btn-whatsapp" data-whatsapp-link href="#contact" target="_blank" rel="noopener">WhatsApp Quote</a>
+            <a class="btn btn-ghost" href="https://t.me/+6fu3dLBxykQ1Y2Vl" target="_blank" rel="noopener">Telegram Group</a>
+            <a class="btn btn-primary" href="mailto:peproute@proton.me?subject=PepRoute quote request">Email PepRoute</a>
+          </div>
+          <div class="direct-note">Email: peproute@proton.me. For Research Use Only. Not for human or veterinary use. Buyer is responsible for destination compliance, import rules, and end-use restrictions.</div>
         </div>
       </div>
     </div>
@@ -1061,85 +1010,6 @@ document.querySelectorAll('[data-whatsapp-link]').forEach(link => {
   requestAnimationFrame(() => document.querySelectorAll('.bar-fill').forEach(el => el.classList.add('on')));
 })();
 
-(() => {
-  const selected = new Set();
-  const basket = document.getElementById('basket');
-  const basketItems = document.getElementById('basketItems');
-  const clearBasket = document.getElementById('clearBasket');
-  const message = document.getElementById('message');
-  const form = document.getElementById('quoteForm');
-  const ok = document.getElementById('formOk');
-
-  function updateMessage() {
-    const cleaned = message.value.replace(/\n?\[Selected route lanes: [^\]]+\]/g, '').trim();
-    const suffix = selected.size ? '[Selected route lanes: ' + Array.from(selected).join(', ') + ']' : '';
-    message.value = suffix ? (cleaned ? cleaned + '\n\n' + suffix : suffix) : cleaned;
-  }
-
-  function renderBasket() {
-    basket.classList.toggle('on', selected.size > 0);
-    basketItems.innerHTML = Array.from(selected).map(route => (
-      '<span class="basket-pill">' + route + '<button class="remove-pill" type="button" data-remove="' + route + '" aria-label="Remove ' + route + '">x</button></span>'
-    )).join('');
-
-    document.querySelectorAll('[data-add]').forEach(btn => {
-      const route = btn.dataset.add;
-      const added = selected.has(route);
-      btn.classList.toggle('added', added);
-      btn.textContent = added ? 'Added' : '+ Add';
-    });
-  }
-
-  document.querySelectorAll('[data-add]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selected.add(btn.dataset.add);
-      renderBasket();
-      updateMessage();
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-
-  basketItems.addEventListener('click', event => {
-    const remove = event.target.closest('[data-remove]');
-    if (!remove) return;
-    selected.delete(remove.dataset.remove);
-    renderBasket();
-    updateMessage();
-  });
-
-  clearBasket.addEventListener('click', () => {
-    selected.clear();
-    renderBasket();
-    updateMessage();
-  });
-
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    const data = new FormData(form);
-    const subject = 'PepRoute stock/custom batch quote request';
-    const body = [
-      'Name: ' + data.get('firstName') + ' ' + data.get('lastName'),
-      'Business email: ' + data.get('email'),
-      'Ship to: ' + data.get('country'),
-      'Shipping preference: ' + (data.get('shipping') || 'Your recommendation'),
-      'Quote type requested: all-in Stock Route / Custom Batch quote',
-      '',
-      'Peptide list and quantities:',
-      data.get('message'),
-      '',
-      'Additional notes:',
-      data.get('notes') || 'None'
-    ].join('\n');
-
-    ok.classList.add('on');
-    window.location.href = 'mailto:orders@peproute.io?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  });
-})();
 </script>
 </body>
 </html>
