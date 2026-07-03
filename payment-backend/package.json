@@ -1,0 +1,17 @@
+{
+  "name": "confluxapi-sandbox",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "checkout": "node src/create-checkout.mjs",
+    "query": "node src/query-order.mjs",
+    "server": "node src/webhook-server.mjs",
+    "webhook": "node src/webhook-server.mjs",
+    "test": "node --test src/*.test.mjs && node src/self-test.mjs",
+    "test:sign": "node src/self-test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

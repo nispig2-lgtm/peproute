@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: peproute-pay
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm run server
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: CONFLUX_BASE_URL
+        value: https://sandbox-api.confluxapi.com
+      - key: CONFLUX_MCH_NO
+        sync: false
+      - key: CONFLUX_GATEWAY_NO
+        sync: false
+      - key: CONFLUX_APP_ID
+        sync: false
+      - key: CONFLUX_APP_SECRET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        value: https://pay.peproute.com
+      - key: ADMIN_TOKEN
+        sync: false
